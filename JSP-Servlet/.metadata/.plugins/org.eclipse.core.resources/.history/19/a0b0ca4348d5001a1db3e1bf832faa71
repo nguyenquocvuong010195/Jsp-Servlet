@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SearchDay</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="#">Home
+					<span class="sr-only">(current)</span>
+			</a></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="BookServlet">Mượn Sách</a></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Manager </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="StudentManagerServlet">Students
+						Manager</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="BookManagerServlet">Books
+						Manager</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="SearchDayServlet">Search day</a>
+				</div></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="LogOutServlet">Log out</a></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="BookHistoryServlet">Lịch Sử Mượn Sách</a></li>
+		</ul>
+
+	</div>
+	<form action="SearchDayServlet" method="POST">
+		<div class="form-group">
+			<label for="formGroupExampleInput">Ngày bắt đầu </label> <input
+				type="date" class="form-control" name="bf"
+				id="formGroupExampleInput" placeholder="Example input">
+		</div>
+		<div class="form-group">
+			<label for="formGroupExampleInput2">Ngày kết thúc</label> <input
+				type="date" class="form-control" name="at"
+				id="formGroupExampleInput2" placeholder="Another input">
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+		<div class="col-3"></div>
+	</form>
+</body>
+</html>

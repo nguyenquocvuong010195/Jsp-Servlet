@@ -1,0 +1,31 @@
+package daoImpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import dao.HistoryBooks;
+import dto.HistoryBook;
+
+public class HistoryBookDAOImpl implements HistoryBooks {
+
+	@Override
+	public HistoryBook danhSachMuonSach(int id) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		String sql ="SELECT s.nameStudent,b.name,br.BorrowDate, br.quantity\r\n" + 
+				"FROM students s, borrows br, books b\r\n" + 
+				"where s.studentId = br.studentID \r\n" + 
+				"AND b.bookID = br.bookID\r\n" + 
+				"AND br.StudentID=?";
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return null;
+	}
+
+}

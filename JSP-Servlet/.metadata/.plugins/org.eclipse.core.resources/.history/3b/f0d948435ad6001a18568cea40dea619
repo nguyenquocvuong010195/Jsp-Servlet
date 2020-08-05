@@ -1,0 +1,18 @@
+package serviceimpl;
+
+import java.util.List;
+
+import daoImpl.BookDAOImpl;
+import dto.Books;
+import service.BookService;
+
+public class BookServiceImpl implements BookService {
+
+	@Override
+	public List<Books> getAllBooks() {
+		BookDAOImpl bookDao = new BookDAOImpl();
+		List<Books> listBook = bookDao.getAllBooks();
+		return listBook;
+	}
+	
+}

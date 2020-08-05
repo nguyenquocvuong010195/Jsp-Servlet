@@ -1,0 +1,7 @@
+package daoImpl;
+
+import dao.HistoryBooks;
+
+public class HistoryBookDAOImpl implements HistoryBooks {
+
+}

@@ -1,0 +1,461 @@
+package daoImpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.taglibs.standard.extra.spath.Step;
+
+import dao.StudentsDAO;
+import dbConnection.ConnectionFactory;
+import dto.Borrows;
+import dto.CheckUser;
+import dto.HistoryBook;
+import dto.Student;
+
+public class StudentsDAOImpl implements StudentsDAO {
+
+	@Override
+	public ArrayList<Student> getAllStudents() {
+		Connection con = null;
+		Statement sta = null;
+		ResultSet rs = null;
+		String sql = " SELECT * FROM students";
+		ArrayList<Student> liststudents = new ArrayList<Student>();
+		try {
+			con = ConnectionFactory.getConnection();
+			sta = con.createStatement();
+			rs = sta.executeQuery(sql);
+			while(rs.next()) {
+				Student stu = new Student();
+				stu.setStudentID(rs.getInt("studentID"));
+				stu.setName(rs.getString("nameStudent"));
+				stu.setAge(rs.getInt("age"));
+				stu.setGender(rs.getInt("gender"));
+				stu.setRole(rs.getString("role"));
+				stu.setUsername(rs.getString("username"));
+				stu.setPassword(rs.getString("password"));
+				liststudents.add(stu);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(sta!=null) {
+				try {
+					sta.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return liststudents;
+	}
+
+	@Override
+	public void insertStudent(Student student) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		String sql = " INSERT INTO students(nameStudent,age,gender,role,username,password) VALUES(?,?,?,?,?,?)";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, student.getName());
+			pre.setInt(2, student.getAge());
+			pre.setInt(3, student.getGender());
+			pre.setString(4, student.getRole());
+			pre.setInt(5, 1);
+			pre.setInt(6,1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public void updateStudent(Student student) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		String sql = " UPDATE students SET nameStudent=?,age=?,gender=?,role=?,password=? WHERE studentId=?";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, student.getName());
+			pre.setInt(2, student.getAge());
+			pre.setInt(3,student.getGender());
+			pre.setString(4, student.getRole());
+			pre.setString(5, student.getPassword());
+			pre.setInt(6,student.getStudentID());
+			pre.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	@Override
+	public void deleteStudent(int studentID) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		String sql = "DELETE FROM students WHERE studentId="+studentID;
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public Student findStudentByUserAndPassword(String userName, String passWord) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		//luôn luôn dùng rs khi hàm trả về 1 đối tượng khi query
+		ResultSet rs = null;
+		String sql="SELECT * FROM students WHERE username=? AND password=?";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, userName);
+			pre.setString(2, passWord);
+			rs=pre.executeQuery();
+			while(rs.next()) {
+				Student stu = new Student();
+				stu.setStudentID(rs.getInt("studentID"));
+				stu.setName(rs.getString("nameStudent"));
+				stu.setAge(rs.getInt("age"));
+				stu.setGender(rs.getInt("gender"));
+				stu.setRole(rs.getString("role"));
+				stu.setUsername(rs.getString("username"));
+				stu.setPassword(rs.getString("password"));
+				return stu;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void createStudent(Student student) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		String sql = " INSERT INTO students(nameStudent,age,gender,username,password) VALUES (?,?,?,?,?)";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, student.getName());
+			pre.setInt(2, student.getAge());
+			pre.setInt(3, student.getGender());
+			pre.setString(4, student.getUsername());
+			pre.setString(5, student.getPassword());
+			pre.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public void createStudentByAdmin(Student student) {
+		Connection con = null;
+		PreparedStatement pre = null; 
+		String sql = " INSERT INTO students(nameStudent,age,gender,role,username,password) VALUES (?,?,?,?,?,?)";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre.setString(1, student.getName());
+			pre.setInt(2, student.getAge());
+			pre.setInt(3, student.getGender());
+			pre.setString(4, student.getRole());
+			pre.setString(5, student.getUsername());
+			pre.setString(6, student.getPassword());
+			pre.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+	//SELECT DATEDIFF(day, '2011/08/25', '2011/08/28') AS DateDiff;
+	public static List<HistoryBook> listMuonSach(String dateBefore, String dateAfter){
+		List<HistoryBook> list = new ArrayList<HistoryBook>();
+		Connection conn = null;
+		PreparedStatement pre = null;
+		String sql  = "SELECT s.nameStudent, b.name , br.BorrowDate, br.quantity\r\n" + 
+				"FROM students as s join\r\n" + 
+				"(SELECT bookId, StudentID,BorrowDate,quantity FROM borrows  where (SELECT DATEDIFF(BorrowDate, ?))>=0 AND (SELECT DATEDIFF(BorrowDate, ?))<=0)\r\n" + 
+				" as br on br.studentID = s.studentId join books as b on br.bookID = b.bookID;";
+		try {
+			conn = ConnectionFactory.getConnection();
+			pre = conn.prepareStatement(sql);
+			pre.setString(1, dateBefore);
+			pre.setString(2, dateAfter);
+			ResultSet rs = pre.executeQuery();
+			while(rs.next()) {
+				//				int borrowId =rs.getInt("BorrowID");
+				//				int studentId = rs.getInt("StudentID");
+				//				int bookId = rs.getInt("BookID");
+				//				Date date = rs.getDate("BorrowDate");
+				//				int sl = rs.getInt("Quantity");
+				//				Borrows br = new Borrows(borrowId, studentId, bookId, date,sl);
+				//				list.add(br);
+				String stuName = rs.getString("nameStudent");
+				String booName = rs.getString("name");
+				Date date = rs.getDate("BorrowDate");
+				int sl = rs.getInt("quantity");
+				HistoryBook hb = new HistoryBook(stuName, booName, date, sl);
+				list.add(hb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(conn!=null) {
+				try {
+					conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public Student getStudentById(int id) {
+		Connection con = null;
+		Statement sta = null;
+		ResultSet rs = null;
+		String sql = " SELECT * FROM students WHERE studentID = "+id;
+		try {
+			con = ConnectionFactory.getConnection();
+			sta = con.createStatement();
+			rs = sta.executeQuery(sql);
+			while(rs.next()) {
+				Student st = new Student();
+				st.setStudentID(id);
+				st.setName(rs.getString("nameStudent"));
+				st.setAge(rs.getInt("age"));
+				st.setGender(rs.getInt("gender"));
+				st.setRole(rs.getString("role"));
+				st.setUsername(rs.getString("username"));
+				st.setPassword(rs.getString("password"));
+				return st;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(sta!=null) {
+				try {
+					sta.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean addNewStudent(Student student) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		boolean result = true;
+		String sql = " INSERT INTO students(nameStudent,age,gender,role,username,password) VALUES (?,?,?,?,?,?)";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, student.getName());
+			pre.setInt(2, student.getAge());
+			pre.setInt(3, student.getGender());
+			pre.setString(4, "student");
+			pre.setString(5, student.getUsername());
+			pre.setString(6, student.getPassword());
+			pre.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false; 
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+	public CheckUser checkUser(String userName) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		boolean result = true;
+		ResultSet  rs = null;
+		String sql ="SELECT COUNT(*) AS CNT FROM students WHERE username = ?;";
+		try {
+			con = ConnectionFactory.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, userName);
+			rs = pre.executeQuery();
+			
+			// đù má quên haha
+			while(rs.next()) {
+				CheckUser ch = new CheckUser();
+				ch.setNumber(rs.getInt("CNT"));
+				return ch;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if(pre!=null) {
+				try {
+					pre.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+
+
+	}
+
+
+}

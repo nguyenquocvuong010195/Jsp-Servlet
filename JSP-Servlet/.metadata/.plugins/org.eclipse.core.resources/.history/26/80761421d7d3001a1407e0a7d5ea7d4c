@@ -1,0 +1,6 @@
+package dao;
+
+public interface HistoryBooks {
+	public HistoryBook danhSachMuonSach(int id);
+
+}

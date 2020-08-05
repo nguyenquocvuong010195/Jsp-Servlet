@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Acces Denied</title>
+	<img scr="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3aa959b4-cdf1-4abe-b7c9-3a17a764953d/ddlw4sm-39a3bbc6-c12d-4bec-a597-14e118c285b7.png/v1/fill/w_1280,h_821,strp/access_denied_by_lim07_ddlw4sm-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD04MjEiLCJwYXRoIjoiXC9mXC8zYWE5NTliNC1jZGYxLTRhYmUtYjdjOS0zYTE3YTc2NDk1M2RcL2RkbHc0c20tMzlhM2JiYzYtYzEyZC00YmVjLWE1OTctMTRlMTE4YzI4NWI3LnBuZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.XvsgRRUtPh46xEcuogS6Gr4lg2J0EwYwpqeuNgMSsxI"></img>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SearchDay</title>
+</head>
+<body>
+	 <form action="BookServlet" method="POST">
+   <div class="row">
+   		<div class="col-3"></div>
+   		<div class="col-6">
+   			<select class="browser-default custom-select" name="bookId">
+			  <option selected>Chọn sách</option>
+			  <c:forEach items="${listBook}" var= "book">
+			  	<option value="${book.bookID}" >${book.name}</option>
+			  </c:forEach>
+			</select>
+   		</div>
+   		<div class="col-3"></div>
+   	</div>
+   	<div class="row">
+   		<div class="col-3"></div>
+   		<div class="col-6">
+   			<input name="soLuong" id="soLuongMuon" type="number" min="1" placeholder="Nhap so luong" class="form-control">
+   		</div>
+   		<button class="btn btn-primary" type="submit">Submit</button>
+   		<div class="col-3"></div>
+   	</div>
+   </form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+function checkBox(){
+	let fullName = document.getElementById('').value;
+	let userName = document.getElementById('').value;
+	let fullname = document.getElementById('').value;
+	let fullname = document.getElementById('').value;
+	let fullname = document.getElementById('').value;
+}

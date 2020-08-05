@@ -1,0 +1,21 @@
+package daoImpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import dao.HistoryBooks;
+import dto.HistoryBook;
+
+public class HistoryBookDAOImpl implements HistoryBooks {
+
+	@Override
+	public HistoryBook danhSachMuonSach(int id) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		return null;
+	}
+
+}

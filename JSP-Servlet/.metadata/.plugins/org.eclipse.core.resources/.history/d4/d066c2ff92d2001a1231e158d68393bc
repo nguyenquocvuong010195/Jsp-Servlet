@@ -1,0 +1,297 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="dto.Student"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Magrabbit library</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+<style>
+.fakeimg {
+	height: auto;
+	background: #aaa;
+}
+
+.content {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+}
+.active{
+    overflow: unset;
+    text-overflow: unset;
+    display: block;
+}
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<!-- Phần header website -->
+		<div class="jumbotron text-center"
+			style="margin-bottom: 0; padding: 0">
+			<img alt="img-header"
+				src="https://img.giaoduc.net.vn//w700/Uploaded/2018/edxwpcqdh/2017_08_18/thoi_quen_doc_sach.jpg"
+				style="height: 466px; width: 1110px;">
+			<h5>Sách mang lại cho chúng ta nguồn kiến thức vô tận, đọc một
+				quyển sách một thế giới mới như được mở ra</h5>
+		</div>
+		<!-- Kết thúc phần header website -->
+
+		<!-- Phần menu chính -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Magrabbit library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="LoginServlet">Mượn Sách</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="LoginServlet">Login</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+		<!-- Kết thúc phần menu chính -->
+
+		<!-- Phần nội dung chính -->
+		<div class="col-sm-8">
+				
+					<h2>Sách HTML</h2>
+					<h5>Mô tả tiêu đề, Ngày 01 tháng 01, 2020</h5>
+					<div class="fakeimg">
+						<img alt="sachhtml"
+							src="https://giuseart.com/wp-content/uploads/2017/02/h%E1%BB%8Dc-html-c%C6%A1-b%E1%BA%A3n-1.png"
+							style="width: 100%">
+					</div>
+					<p id="contents" class="content">Để trở thành một chuyên gia
+						thiết kế web, bạn cần hiểu rõ bối cảnh phát triển nhanh chóng của
+						các công nghệ web, trong đó có công nghệ thiết kế web thích ứng.
+						Hiểu theo nghĩa rộng, thiết kế web thích ứng là việc thiết kế
+						website phù hợp với hành vi của người dùng và khả năng của màn
+						hình hiển thị. Nếu cho rằng cần tạo một phiên bản “mobile” cho
+						website của mình, bạn hãy nghĩ lại. Thiết kế web thích ứng cung
+						cấp một bản thiết kế có khả năng làm việc tốt với desktop,
+						smartphone và nhiều thiết bị khác. HTML5, cũng như CSS3 vẫn đang
+						tiếp tục hoàn thiện và cuốn sách này sẽ giúp bạn nắm được những
+						khái niệm nền tảng về cách tổ chức, sáng tạo và phân phối nội dung
+						web một cách hiệu quả thông qua những phương pháp tối ưu nhất.Cuốn
+						sách này gồm 15 bài học, giúp bạn tìm hiểu các kiến thức HTM5 và
+						CSS3 cơ bản và nâng cao để tạo các trang web thích ứng một cách
+						hiệu quả. Các hướng dẫn từng bước được trợ giúp với video và mã
+						nguồn thực hành từ gói tài nguyên kèm theo sách. Qua các bài học,
+						bạn sẽ:- Học cách viết mã để tạo các trang web với tính năng vượt
+						trội, giàu khả năng thích ứng nhờ các thẻ HTML5 mới- Xây dựng các
+						form HTML5 và biết cách sử dụng form trong thực tế- Thêm các nội
+						dung đa phương tiện có tính linh hoạt cao mà không cần đến plug-in
+						trình duyệt- Sử dụng phần tử Canvas để tạo các hình với màu sắc,
+						đường viền, hiệu ứng chuyển màu …- Kết hợp việc định kiểu và các
+						tính năng hoạt hình mạnh mẽ của CSS3 để cải tiến trang web- Làm
+						việc với các công nghệ hỗ trợ HTML5 để xây dựng ứng dụng web dễ
+						hơn bao giờ hết</p>
+
+					<div class="two-button">
+						<button class="btn btn-primary" type="button"
+							onclick="truyenthamso()">Xem Thêm</button>
+						<a class="btn btn-primary" href="BookServlet" role="button">Mượn
+							Sách</a>
+					</div>
+			
+				<br>
+			
+					<h2>Sách Excel</h2>
+					<h5>Mô tả tiêu đề, Ngày 01 tháng 01, 2020</h5>
+					<div class="fakeimg">
+						<img alt="sachexl"
+							src="https://imgt.taimienphi.vn/cf/Images/vi/2018/3/2/cach-lam-so-sach-ke-toan-tren-excel.jpg"
+							style="width: 100%">
+					</div>
+					<p id="contents1" class="content">Trong lĩnh vực điện toán văn
+						phòng. Microsoft Excel là môt trong những chương trình đã và đang
+						ứng dụng rộng rãi trong nhiểu lĩnh vực : Kinh tế, kế toán, thương
+						mại, quản lý và nhiểu hơn nữa. Với Excel, bạn có trong tay các
+						công cụ và lệnh để tạo các bảng tính khác nhau, tạo những cơ sở dữ
+						liệu cho từng thời kỳ, lập nên biểu đổ diễn biến, dự đoán xu thế
+						phát triển, từ đó đề ra kế hoạch phát triển. Tại Việt Nam, hiện
+						excel rất phổ biến. Hầu như các máy tính mới lắp ráp đều có yêu
+						cầu sử dụng excel. Tuy rất phổ cập và có nhiều sách trình bày cách
+						sử dụng chương trình này, nhưng để có được tài liệu tự học kiểu
+						"Xem tới đâu thực hành tới đó" giúp cho người đọc có thể tự tham
+						khảo và thực hành ứng dụng excel trong thực tế.</p>
+						<div class="two-button">
+						<button class="btn btn-primary" type="button"
+							onclick="truyenthamso1()">Xem Thêm</button>
+						<a class="btn btn-primary" href="BookServlet" role="button">Mượn
+							Sách</a>
+					</div>
+			
+				<br>
+			
+					<h2>Sách Access</h2>
+					<h5>Mô tả tiêu đề, Ngày 01 tháng 01, 2020</h5>
+					<div class="fakeimg">
+						<img alt="sachacces"
+							src="https://i.ytimg.com/vi/x-mWNadLtz0/maxresdefault.jpg"
+							style="height: 405.53px; width: 729.98px">
+					</div>
+					<p id="contents2" class="content">Giáo trình ACCESS - Lớp 6 -
+						Bài học là giáo trình tiếng Anh được thiết kế dành riêng cho học
+						sinh đang học tiếng Anh tại các trường Trung học Cơ sở, chương
+						trình tiếng Anh tăng cường. Khóa học dựa trên phương pháp Tổng hợp
+						ngôn ngữ. Tập trung chính vào các phương thức học giúp bộ sách
+						ACCESS trở thành sách giáo khoa lý tưởng cho học sinh Trung học cơ
+						sở. Chương trình học tối ưu, đa góc, đảm bảo giúp học sinh cải
+						thiện kỹ năng ngôn ngữ toàn diện ĐIỂM ĐẶC TRƯNG: - Thiết kế rõ
+						ràng, dễ hiểu, mang lại sự thú vị cho học sinh qua từng trang sách
+						- Các bài đọc thích hợp với lứa tuổi, giúp giáo viên dễ dàng tập
+						trung vào việc dạy kỹ năng đọc và học từ vựng - Các tài liệu tham
+						khảo từ vựng và ngữ pháp phía sau sách bài học giúp học sinh có
+						thể ôn tập hiệu quả cho các kỳ thi tốt nghiệp.</p>
+						<div class="two-button">
+						<button class="btn btn-primary" type="button"
+							onclick="truyenthamso2()">Xem Thêm</button>
+						<a class="btn btn-primary" href="BookServlet" role="button">Mượn
+							Sách</a>
+					</div>
+				<br>
+			
+					<h2>Sách Word</h2>
+					<h5>Mô tả tiêu đề, Ngày 01 tháng 01, 2020</h5>
+					<div class="fakeimg">
+						<img alt="sachexl"
+							src="https://tech12h.com/sites/default/files/styles/inbody400/public/field/image/3_12805f5235898ae7019a66211d464fc0.jpg?itok=5yf79tht"
+							style="width: 100%">
+					</div>
+					<p id="contents3" class="content">Word và Excel là hai chương
+						trình thuộc bộ Microsoft Office đã và đang ứng dụng rộng rãi trong
+						nhiều lĩnh vực. Hiện Word và Excel rất phổ biến, hầu như các máy
+						tính mới lắp ráp đều có yêu cầu sử dụng Word và Excel. Với hai
+						chương trình này, bạn có trong tay các công cụ và lệnh để tạo
+						nhanh các file văn bản có bố cục gọn, đẹp và những bảng tính khác
+						nhau, tạo những cơ sở dữ liệu cho từng thời kỳ, lập nên biểu đồ,
+						dự đoán xu thế phát triển, từ đó đề ra kế hoạch phát triển. Nội
+						dung sách trình bày những kiến thức không quá sâu với các hướng
+						dẫn thực hành từng bước, trực quan, dễ học giúp những người mới
+						bắt đầu làm quen với việc soạn thảo văn bản (Word), bảng tính
+						(Excel) nhanh chóng khai thác 2 chương trình này trong công việc.</p>
+					<div class="two-button">
+						<button class="btn btn-primary" type="button"
+							onclick="truyenthamso3()">Xem Thêm</button>
+						<a class="btn btn-primary" href="BookServlet" role="button">Mượn
+							Sách</a>
+					</div>
+			
+				<br>
+		
+					<h2>Sách Lập Trình Python</h2>
+					<h5>Mô tả tiêu đề, Ngày 01 tháng 01, 2020</h5>
+					<div class="fakeimg">
+						<img alt="sachexl"
+							src="https://2.bp.blogspot.com/-0E1nScdAoDM/WW_wo88-ftI/AAAAAAAAAbE/Kk8FJyT4hBoUbkAb6L61eGl4p7ijjtPaACLcBGAs/s1600/python.jpg"
+							style="width: 100%">
+					</div>
+					<p id="contents4" class="content">Cuộc cách mạng công nghệ 4.0
+						đã và đang làm thay đổi mọi lĩnh vực khoa học và đời sống. Các
+						ngành nghề dựa vào thành quả của lĩnh vực công nghệ cao như Công
+						nghệ Nano, Công nghệ Sinh học và đặc biệt là Công nghệ Thông tin
+						ngày càng phát triển vượt bậc cả về lượng lẫn về chất. Để góp phần
+						cho ngành Công nghệ thông tin có ảnh hưởng mạnh mẽ như vậy, thì
+						việc lựa chọn ngôn ngữ lập trình trong các lĩnh vực mũi nhọn như
+						Trí tuệ nhân tạo (AI), máy học (Machine Learning), khai phá dữ
+						liệu (Data Mining), học sâu (Deep Learning) trở nên vô cùng quan
+						trọng và cần thiết. Một trong những ngôn ngữ đáp ứng được hầu hết
+						các tiêu chí của tất cả nhà lập trình khó tính nhất đó chính là
+						ngôn ngữ lập trình Python. Ngôn ngữ lập trình Python không những
+						đáp ứng được yêu cầu của các bài toán lập trình cổ điển trước đây
+						mà còn đáp ứng được các bài toán lập trình mới. Tuy nhiên, các tài
+						liệu về lập trình Python ở nước ta còn thiếu. Đó là rào cản lớn
+						cho những bạn muốn sử dụng ngôn ngữ này trong lập trình. Ngoài ra,
+						Chương trình Giáo dục phổ thông môn Tin học sắp tới sẽ đưa ngôn
+						ngữ lập trình Python vào giảng dạy nên việc biên soạn tài liệu có
+						chất lượng về Python cho các em học sinh là một việc làm rất cấp
+						thiết. Đó là những lí do tại sao nhóm tác giả cho ra đời cuốn sách
+						Đường Vào Lập Trình Python. Cuốn sách là sản phẩm “thai nghén”
+						trong một thời gian dài vừa viết, vừa phản biện sao cho thành phẩm
+						cuối cùng được ưng ý nhất. Cuốn sách có 22 chủ đề được viết theo
+						lối viết sư phạm. Nội dung cuốn sách bàn về những vấn đề cơ bản
+						của lập trình như cấu trúc lặp, kiểu dữ liệu chuỗi, … cũng như
+						những vấn đề nâng cao, hiện đại như quay lui, hàng đợi, ngăn xếp,
+						đồ họa,kiểu dữ liệu từ điển, … Chính vì thế, cuốn sách đáp ứng
+						được mọi nhu cầu từ thấp đến cao, từ đơn giản đến phức tạp của tất
+						cả các em học sinh học Phổ thông Trung học, sinh viên, học viên
+						cao học ngành Khoa học máy tính, quý thầy cô và nhà nghiên cứu
+						muốn tìm hiểu về ngôn ngữ lập trình Python. Những ai quan tâm đến
+						lập trình Python đều tìm thấy nhiều điều bổ ích từ các cuốn sách
+						này</p>
+					<div class="two-button">
+						<button class="btn btn-primary" type="button"
+							onclick="truyenthamso4()">Xem Thêm</button>
+						<a class="btn btn-primary" href="BookServlet" role="button">Mượn
+							Sách</a>
+					</div>
+		
+				<br>
+
+				<!-- Kết thúc cột phải -->
+
+			</div>
+		</div>
+		<!-- Kết thúc phần nội dung chính -->
+
+		<!-- Phần Footer -->
+		<div class="jumbotron text-center" style="margin-bottom: 0">
+			<p>Bản quyền 2020 thuộc về NQV</p>
+		</div>
+		<!-- Kết thúc phần Footer -->
+</body>
+<script>
+	function truyenthamso() {
+		var element = document.getElementById("contents")
+		element.classList.toggle("active");
+	};
+	function truyenthamso1() {
+		var element = document.getElementById("contents1")
+		element.classList.toggle("active");
+	};
+	function truyenthamso2() {
+		var element = document.getElementById("contents2")
+		element.classList.toggle("active");
+	};
+	function truyenthamso3() {
+		var element = document.getElementById("contents3")
+		element.classList.toggle("active");
+	};
+	function truyenthamso4() {
+		var element = document.getElementById("contents4")
+		element.classList.toggle("active");
+	};
+</script>
+</html>

@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update Student</title>
+</head>
+<body>
+	<%-- <jsp:include page="header.jsp" /> --%>
+	<h2 style="text-align: center; color: blue;">UPDATE BOOK</h2>
+
+	<form method="POST" action="${pageContext.request.contextPath}/EditBooksServlet">
+		<table border="0">
+			<tr>
+				<td>Id</td>
+				<td value="${listBooks.bookID}" name="id">${listBooks.bookID}</td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" value="${listBooks.name}" /></td>
+			</tr>
+			<tr>
+				<td>Total Page</td>
+				<td><input type="text" name="totalPage" value="${listBooks.totalPage}" /></td>
+			</tr>
+			<tr>
+				<td>Type</td>
+				<td><input type="text" name="type" value="${listBooks.type}" /></td>
+			</tr>
+			<tr>
+				<td>Quantity</td>
+				<td><input type="text" name="quanity" value="${listBooks.quantity}" /></td>
+			</tr>
+			<tr>
+				<td>quantityExists</td>
+				<td><input type="text" name="quantityExists" value="${listBooks.quantityExists}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

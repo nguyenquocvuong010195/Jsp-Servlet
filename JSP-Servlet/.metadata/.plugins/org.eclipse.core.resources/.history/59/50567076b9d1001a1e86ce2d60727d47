@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>LIỆT KÊ DANH SÁCH KHÁCH HÀNG</title>
+
+</head>
+<body>
+
+	
+
+	<div class="main">
+		<h1 id="title">Student Management</h1>
+		<div id="form-container">
+			<h2><a href="student?action=new">Add New Student</a></h2>		
+		</div>
+		<table cellpadding="5">
+			<tr>
+					<th>Mã học sinh</th>
+					<th>Tên học sinh</th>
+					<th>Tuổi</th>
+					<th>Giới Tính</th>
+					<th>Phân Quyền</th>
+					<th>User Name</th>
+					<th>Pass Word</th>
+			</tr>
+			<c:forEach var="student" items="${listStudent}" >
+				<tr>
+					<td><c:out value="${stu.studentID}" /></td>
+					<td><c:out value="${stu.name}"/></td>
+					<td><c:out value="${stu.age}"/></td>
+					<td><c:out value="${stu.sdt}"/></td>
+					<td><c:out value="${stu.role}"/></td>
+					<td><c:out value="${stu.username}"/></td>
+					<td><c:out value="${stu.password}"/></td>
+					<td>
+						<a href="student?action=edit&id=<c:out value='${stu.studentID }' />">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="student?action=delete&id=<c:out value='${stu.studentID }' />"></a>
+					</td>
+				</tr>
+			
+			 </c:forEach>
+		</table>
+	</div>
+	
+	<!-- Footer -->
+
+	<!-- Footer -->
+</body>
+</html>

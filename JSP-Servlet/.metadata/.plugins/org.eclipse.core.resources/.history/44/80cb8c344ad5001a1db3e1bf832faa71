@@ -1,0 +1,69 @@
+package controller;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.BooksDAO;
+import daoImpl.BookDAOImpl;
+import dto.Books;
+
+/**
+ * Servlet implementation class BookServlet
+ */
+@WebServlet("/BookServlet")
+public class BookServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BookServlet() {
+        super();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BookDAOImpl bookDao = new BookDAOImpl();
+		List<Books> listBook = bookDao.getAllBooks();
+		request.setAttribute("listBook", listBook);
+		RequestDispatcher rd = request.getRequestDispatcher("books.jsp");
+		rd.forward(request, response);
+		}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		BookDAOImpl bookDAO = new BookDAOImpl();
+		int soLuongMuon = Integer.parseInt(request.getParameter("soLuong"));
+		int id = Integer.parseInt(request.getParameter("bookId"));
+		Books soLuongTon = bookDAO.queryQuantityExists(id);
+		int sol = soLuongTon.getQuantityExists();
+		int updateSLT = sol - soLuongMuon;
+		bookDAO.updateQuantityExists(updateSLT, id);
+		LocalDateTime localDateTime = LocalDateTime.now();
+		DateTimeFormatter formatterFull = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String date = localDateTime.format(formatterFull);
+		int ids = (int) session.getAttribute("idS");
+		bookDAO.updateBorrows(ids, id, date, soLuongMuon);
+		response.sendRedirect(request.getContextPath() + "/HomePageServlet");
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+F:\Learn Javaa\Aptech\Day 10 - MVC _ Servlet JSP\JSP-Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1062818028.index
+\JSP-Servlet-Buy\src
+F:\Learn Javaa\Aptech\Day 10 - MVC _ Servlet JSP\JSP-Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3748894300.index
+\JSP-Servlet-Buy\src

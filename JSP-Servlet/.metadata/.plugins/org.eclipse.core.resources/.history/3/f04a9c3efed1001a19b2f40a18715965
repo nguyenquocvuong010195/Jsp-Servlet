@@ -1,0 +1,102 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Student Manager</title>
+ <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="plugins/font-awesome/css/all.min.css"> 
+</head>
+<body>
+
+	
+
+	<div class="container mt-3" class ="DanhSach">
+		<h2>Trang quản lý học sinh</h2>
+		<table class="table table-bordered table-striped " id="example" cellpadding="5">
+			<thead>
+				<tr>
+					<th>Mã học sinh</th>
+					<th>Tên học sinh</th>
+					<th>Tuổi</th>
+					<th>Giới Tính</th>
+					<th>Phân Quyền</th>
+					<th>User Name</th>
+					<th>Pass Word</th>
+				</tr>
+			</thead>
+			<tbody id="myTable">
+			<c:forEach items="${listStudent}" var="stu">
+				<tr>
+						<td>${stu.studentID}</td>
+						<td>${stu.name}</td>
+						<td>${stu.age}</td>
+						<td>${stu.gender}</td>
+						<td>${stu.role}</td>
+						<td>${stu.username}</td>
+						<td>${stu.password}</td>
+						<td>
+							<div class="dropdown">
+								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Option</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="SuaThongTinServlet?idStudent=${stu.studentID}&chucNang=suaKH">Edit</a>
+									<a class="dropdown-item" href="XoaThongTinServlet?idStudent=${stu.studentID}&chucNang=xoaKH">Delete</a>
+								</div>
+							</div>
+						</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+		<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+	</div>
+
+	<script>
+	$(document).ready(function() {
+        $('#example').DataTable({
+			"ordering": false,
+			"lengthChange": false,
+			"searching": true,
+			"pageLength": 6
+		});
+    });
+	</script>
+	
+	<!-- Footer -->
+
+	<!-- Footer -->
+</body>
+</html>

@@ -1,0 +1,59 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import daoImpl.BookDAOImpl;
+import dto.Books;
+
+/**
+ * Servlet implementation class EditBooksServlet
+ */
+@WebServlet("/EditBooksServlet")
+public class EditBooksServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditBooksServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String ids = request.getParameter("idBooks");
+		int id = Integer.parseInt(ids);
+		BookDAOImpl bookDAO = new BookDAOImpl();
+		Books book = bookDAO.getBooksById(id);
+		RequestDispatcher rd = request.getRequestDispatcher("editBooks.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String ids = request.getParameter("id");
+		int id = Integer.parseInt(ids);
+		String name = request.getParameter("name");
+		String to = request.getParameter("totalPage");
+		int totalPage = Integer.parseInt(to);
+		String type = request.getParameter("type");
+		String quan = request.getParameter("quanity");
+		int quanity = Integer.parseInt(quan);
+		String to = request.getParameter("totalPage");
+		int totalPage = Integer.parseInt(to);
+		
+	}
+
+}

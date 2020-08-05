@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>Student Manager</title>
+ <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="plugins/font-awesome/css/all.min.css"> 
+</head>
+<body>
+
+	
+
+	<div class="container mt-3" class ="DanhSach">
+		<h2>Trang quản lý học sinh</h2>
+		<table class="table table-bordered table-striped " id="example" cellpadding="5">
+			<thead>
+				<tr>
+					<th>Mã Sách</th>
+					<th>Tên sách</th>
+					<th>Tổng Số Trang</th>
+					<th>Loại sách</th>
+					<th>Số Lượng sách</th>
+					<th>User Name</th>
+				</tr>
+			</thead>
+			<tbody id="myTable">
+			<c:forEach items="${listBooks}" var="book">
+				<tr>
+						<td>${book.bookID}</td>
+						<td>${book.name}</td>
+						<td>${book.totalPage}</td>
+						<td>${book.type}</td>
+						<td>${stu.quanity}</td>
+						<td>${stu.quantityExists}</td>
+						<td>
+							<div class="dropdown">
+								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Option</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="EditBooksServlet?idStudent=${book.bookID}">Edit</a>
+									<a class="dropdown-item" href="DeleteStudentServlet?idStudent=${book.bookID}">Delete</a>
+								</div>
+							</div>
+						</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<script>
+	$(document).ready(function() {
+        $('#example').DataTable({
+			"ordering": false,
+			"lengthChange": false,
+			"searching": true,
+			"pageLength": 6
+		});
+    });
+	</script>
+	
+	<!-- Footer -->
+
+	<!-- Footer -->
+</body>
+</html>
